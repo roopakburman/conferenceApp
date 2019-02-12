@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Speakers</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content speaker-list">
+  <ion-list >
+    <ion-list-header *ngIf="!speakersListVal">
+     <b> No Speakers Found , Turn On Your Wifi </b>
+    </ion-list-header>
+    <ion-grid fixed *ngFor="let speaker of speakers$Ref | async">
+      <ion-row align-items-stretch>
+          <ion-card class="speaker-card" no-padding>
+            <ion-card-header>
+              <button ion-item detail-none (click)="goToSpeakerDetail(speaker)">
+                <ion-avatar item-start>
+                  <img [src]="speaker.profilePic" alt="Speaker profile pic">
+                </ion-avatar>
+                <h2> {{speaker?.name}} </h2>
+              </button>
+            </ion-card-header>
+
+            <ion-card-content class="outer-content">
+              <ion-list>
+                <ion-grid no-padding no-margi (click)="goToSpeakerDetail(speaker)">
+                  <ion-row>
+                    <ion-col col-1>
+                    </ion-col>
+                    <ion-col >
+                      <ion-note class="speaker_desc" text-wrap >
+                        {{speaker?.desc}}
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <div *ngIf="speaker.session">
+                  <ion-item-divider sticky>
+                    <b>Ομιλίες</b>
+                  </ion-item-divider>
+                  <button ion-item *ngFor="let session of speaker.session" (click)="goToSessionDetail(session,speaker.name)">
+                    <h3>{{session?.title}}</h3>
+                    <ion-icon item-end name="arrow-forward" ></ion-icon>
+                  </button>
+                </div>
+
+              </ion-list>
+            </ion-card-content>
+
+          </ion-card>
+
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

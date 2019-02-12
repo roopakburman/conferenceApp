@@ -1,0 +1,57 @@
+$SIDEMENU_TOP:  #bfbfbf; //#bababa; //#d8d8d8;
+$SIDEMENU_BOTTOM: #ffffff;
+$SIDEMENU_TRANSPARENCY: rgba(255,255,255,0.4);
+
+$categories: (
+ ionic: color($colors, primary),
+ angular: #AC282B,
+ communication: #8E8D93,
+ tooling: #FE4C52,
+ services: #FD8B2D,
+ design: #FED035,
+ workshop: #69BB7B,
+ food: #3BC7C4,
+ documentation: #B16BE3,
+ navigation: #6600CC,
+);
+
+@function auxiliary-categories() {
+  @return map-remove($categories);
+}
+
+page-schedule {
+  @each $track, $value in auxiliary-categories() {
+   ion-item-sliding[track=#{$track}] ion-label {
+     border-left: 2px solid $value;
+     padding-left: 10px;
+   }
+  }
+}
+
+.ion_item_schedule{
+  //background-color:  #d3d3d3;
+  background: -webkit-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+  background: -o-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+  background: -moz-linear-gradient(bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+  background: linear-gradient(to bottom right, $SIDEMENU_TOP, $SIDEMENU_BOTTOM);
+}
+
+.ion_item_schedule_time{
+  color : #ffffff;
+  font-weight: 300;
+}
+
+.iconic{
+  text-align: start;
+  font-size: 1.6em;
+  padding-top: 12%;
+}
+
+.likes_icon{
+  text-align: end;
+  color: color($colors, primary);
+  ion-icon{
+    top: 0;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-segment [(ngModel)]="segment" >
+      <ion-segment-button value="day_one">
+        4 Νοεμβριου
+      </ion-segment-button>
+      <ion-segment-button value="day_two">
+        5 Νοεμβριου
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="segment">
+
+
+
+  <ion-list *ngSwitchCase="'day_one'">
+    <ion-list-header  *ngIf="!shownSessionsDay_1">
+      No Sessions Found , Turn On Your Wifi
+    </ion-list-header>
+
+    <ion-item-group *ngFor="let group of scheduleDataFirst | async" > <!--[hidden]="group.hide" -->
+
+      <ion-item-divider sticky class="ion_item_schedule">
+          <h2 class="ion_item_schedule_time">        <b>{{group?.time}}</b>    </h2>
+      </ion-item-divider>
+
+
+
+      <ion-item *ngFor="let session of group.sessions ; let i = index" #slidingItem  (click)="goToSessionDetail(session , i, group.$key,'users-day-1')">
+
+        <ion-grid>
+          <ion-row>
+             <ion-col col-2>
+               <ion-icon class="iconic" color="{{session?.color}}" name="{{session?.icon}}"></ion-icon>
+             </ion-col>
+             <ion-col col-8>
+               <h3 text-start text-wrap>{{session?.name}}</h3>
+               <p>
+                 {{session?.timeStart}} &mdash;
+                 {{session?.timeEnd}}
+               </p>
+             </ion-col>
+             <ion-col col-2 class="likes_icon">
+                 <ion-note text-end >{{session?.likes}}</ion-note>
+                 <ion-icon icon-end name="star"></ion-icon>
+             </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-end>
+            <p text-end>
+              <b>{{session?.location}}</b>
+            </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+
+
+    </ion-item-group>
+
+  </ion-list>
+
+  </div>
+
+  <div [ngSwitch]="segment">
+
+    <ion-list *ngSwitchCase="'day_two'">
+      <ion-list-header *ngIf="!shownSessionsDay_2">
+        No Sessions Found , Turn On Your Wifi
+      </ion-list-header>
+      <ion-item-group *ngFor="let group of scheduleDataSec | async" > <!--[hidden]="group.hide" -->
+
+        <ion-item-divider sticky class="ion_item_schedule">
+          <h2 class="ion_item_schedule_time">          <b>{{group?.time}}</b>  </h2>
+        </ion-item-divider>
+
+
+
+        <ion-item *ngFor="let session of group.sessions ; let i = index" #slidingItem  (click)="goToSessionDetail(session , i, group.$key,'users-day-2')">
+
+          <ion-grid>
+            <ion-row>
+              <ion-col col-2>
+                <ion-icon class="iconic" color="{{session?.color}}" name="{{session?.icon}}"></ion-icon>
+              </ion-col>
+              <ion-col col-8>
+                <h3 text-start text-wrap>{{session?.name}}</h3>
+                <p>
+                  {{session?.timeStart}} &mdash;
+                  {{session?.timeEnd}}
+                </p>
+              </ion-col>
+              <ion-col col-2 class="likes_icon">
+                <ion-note text-end >{{session?.likes}}</ion-note>
+                <ion-icon icon-end name="star"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-end>
+                <p text-end>
+                  <b>{{session?.location}}</b>
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-item>
+
+
+      </ion-item-group>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

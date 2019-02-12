@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{speaker?.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="speaker-detail">
+  <div *ngIf="speaker">
+    <img [src]="speaker.profilePic" [alt]="speaker.name" class="image_speaker"><br>
+    <div text-center class="keynote" *ngIf="speaker?.keynote">
+      <ion-note >
+        <b>{{speaker?.keynote}}</b>
+      </ion-note>
+      <p></p>
+    </div>
+    <div text-center>
+
+      <ion-note text-wrap>
+        {{speaker?.desc}}
+      </ion-note>
+      <p></p>
+    </div>
+    <p text-center padding-left padding-right >{{speaker?.about}}</p>
+
+    <div *ngIf="speaker.session">
+    <ion-item-divider text-start sticky class="item_divider">
+      Ομιλίες
+    </ion-item-divider>
+
+    <ion-item *ngFor="let session of speaker.session">
+      <h2 text-wrap>{{session?.title}}</h2>
+    </ion-item>
+    </div>
+  </div>
+
+</ion-content>

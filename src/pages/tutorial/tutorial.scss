@@ -1,0 +1,93 @@
+
+page-tutorial {
+  .toolbar-background {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  ion-slides .swiper-pagination {
+    @extend .swiper-pagination-black }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .slide-title {
+    margin-top: 1.3rem;
+  }
+
+
+  .slide-title_census{
+  }
+
+  .slide-image_foss{
+    margin-top: 11px;
+  }
+
+  .slide-title_foss {
+    padding-top: 6%;
+  }
+
+  .slide-image {
+    max-height: 40%;
+    max-width: 50%;
+    margin: 36px 0;
+  }
+  .slide-image_ethniki {
+    max-height: 90%;
+    max-width: 94%;
+    margin: 36px 0;
+    margin-left: 3%;
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #60646B;
+
+    b {
+      color: #000000;
+    }
+
+  }
+
+
+
+  .slide_image_wind{
+    padding-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slide-title_ellak{
+    padding-top: 40px;
+  }
+
+  .slide_image_ots{
+    padding-top: 15%;
+    height: 30%;
+  }
+
+  .slide_title_ots{
+    padding-top: 4%;
+
+  }
+
+  .text_container{
+    height: 270px;
+    max-height: 270px;
+    overflow-y: scroll;
+  }
+
+  .text_container_ellak{
+    height: 200px;
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
+}
